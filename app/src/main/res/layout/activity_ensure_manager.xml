@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@mipmap/back_white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:text="保障计划"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_plane_plan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="飞行计划"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/plane_plan"/>
+
+        <TextView
+            android:id="@+id/tv_bz_plan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="保障任务"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/baozhang_plan"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_bottom_1"
+        android:enabled="true"
+        android:icon="@drawable/sel_tab_3"
+        android:title="首页"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/item_bottom_2"
+        android:enabled="true"
+        android:icon="@drawable/sel_tab_1"
+        android:title="态势"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/item_bottom_3"
+        android:enabled="true"
+        android:icon="@drawable/sel_tab_2"
+        android:title="数据"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/item_bottom_4"
+        android:enabled="true"
+        android:icon="@drawable/sel_tab_0"
+        android:title="上报"
+
+        app:showAsAction="ifRoom" />
+
+</menu>

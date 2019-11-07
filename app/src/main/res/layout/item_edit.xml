@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_gray">
+
+    <EditText
+        android:id="@+id/et_item"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="请输入"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:background="@drawable/bg_white_r_2"
+        android:layout_toLeftOf="@+id/tv_delete"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+
+    <TextView
+        android:id="@+id/tv_delete"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:padding="3dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:text="删除"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/et_item"
+        android:background="@color/bg_gray"/>
+
+</RelativeLayout>

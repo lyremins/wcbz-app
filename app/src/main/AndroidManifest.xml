@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.deviceinfo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 开启蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 蓝牙管理 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activitys.main.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.state_config.EditStatusActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.guanlian.CommonWebActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.ammo.AmmoDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.qijian.QijianDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.car.CarDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.people.PeopleDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.guanlian.PlaneAmmoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.guanlian.PlaneQijianActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.guanlian.PlaneCarActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activitys.taishi.QijianStateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.taishi.BzStateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.taishi.AmmoStateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.taishi.PeopleStateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.taishi.CarStateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.taishi.PlaneStateActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.ensure_manager.BzTaskWebActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.ensure_manager.AirPlanWebActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.chat.ContactListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.blue_tooth.BlueToothActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.org.OrgManagerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.state_config.StateConfigActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activitys.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activitys.equip.AddEquipActivity" />
+        <activity android:name=".activitys.plane.PlaneDetailActivity" />
+        <activity android:name=".activitys.subject.AddSubjectActivity" />
+        <activity android:name=".activitys.fault.AddFaultActivity" />
+        <activity android:name=".activitys.car.AddCarActivity" />
+        <activity android:name=".activitys.air_plan.AddAirPlanActivity" />
+        <activity android:name=".activitys.qijian.AddQiJianActivity" />
+        <activity android:name=".activitys.ammo.AddAmmoActivity" />
+        <activity
+            android:name=".activitys.subject.SubjectListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.qijian.QiJianListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.fault.FaultListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.equip.EquipListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.config.ConfigListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.car.CarListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ammo.AmmoListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.air_plan.AirPlanListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.people.AddAirPeopleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.people.AirPeopleListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.chat.ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.ensure_manager.EnsureManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UpLoadStateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.plane.AddPlaneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.plane.PlaneListActivity"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.android.deviceinfo.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public" />
+        </provider>
+    </application>
+
+</manifest>

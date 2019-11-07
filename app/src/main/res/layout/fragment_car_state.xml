@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="选择车辆："
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <TextView
+                    android:id="@+id/tv_plane"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:hint="点击选择"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginRight="12dp"
+                    android:drawableRight="@mipmap/paixu"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="选择车辆状态"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/tv_plane_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:hint="点击选择"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginRight="12dp"
+                    android:drawableRight="@mipmap/paixu"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="选择车辆任务"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/tv_plane_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:hint="点击选择"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginRight="12dp"
+                    android:drawableRight="@mipmap/paixu"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="选择车辆进场状态"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:id="@+id/tv_plane_enter"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:hint="点击选择"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginRight="12dp"
+                    android:drawableRight="@mipmap/paixu"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="12dp"/>
+
+                <Button
+                    android:id="@+id/btn_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="上报数据"
+                    android:textColor="#fff"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/bg_blue_r_2"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12dp"
+            android:src="@mipmap/back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="状态配置"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="飞机状态配置:"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="bold"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_stateModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="飞机状态配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_plane"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_plane"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="飞机故障配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_faultModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="飞机故障配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_plane_guzhang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_plane_guzhang"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="飞机任务配置:"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="bold"
+                android:textColor="#333"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_taskModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="飞机任务配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_plane_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_plane_task"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="飞机科目配置:"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="bold"
+                android:textColor="#333"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_subjectModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="飞机科目配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_plane_project"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_plane_project"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="气象科目配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_sceneModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="气象科目配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_sceneModel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_sceneModel"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="车辆任务配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_carTaskModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="车辆任务配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_car_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_car_task"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="车辆状态配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_carStateModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="车辆状态配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_car_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_car_state"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="车辆类型配置:"
+                android:textStyle="bold"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_carTypeModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="车辆类型配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_car_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_car_type"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="车辆故障配置:"
+                android:textStyle="bold"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_carFaultModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="车辆故障配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_car_guzhang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_car_guzhang"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="人员类型配置:"
+                android:textStyle="bold"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_pTypeModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="人员类型配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_user_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_user_type"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="人员专业配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tv_pMajorModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="人员专业配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_user_pro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_user_pro"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="保障任务配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_ensureModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="保障任务配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_baozhang_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_baozhang_task"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="人员工作状态配置:"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="bold"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_pStatusModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="人员工作状态配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_user_work"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_user_work"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="车辆工作状态配置:"
+                android:lineSpacingExtra="2dp"
+                android:textStyle="bold"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_carWorkModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="车辆工作状态配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_car_work"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_car_work"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:text="人员职务配置:"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_pPostModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:text="人员职务配置"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/et_add_user_job"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_r_2"
+                    android:hint="输入内容后点击右侧添加"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp" />
+
+                <Button
+                    android:id="@+id/btn_add_user_job"
+                    android:layout_width="65dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_blue_r_5"
+                    android:padding="5dp"
+                    android:text="添加"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

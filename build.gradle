@@ -1,0 +1,70 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter() { url 'http://jcenter.bintray.com/' }
+        maven { url "https://jitpack.io" }
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+// constraint 布局版本
+    constraintVersion = '1.0.2'
+
+// testRunner版本
+    testRunnerVersion = '1.0.1'
+// espresso版本
+    espressoVersion = '3.0.1'
+// glide版本
+    glideVersion = '4.9.0'
+// 磁盘缓存版本
+    diskLruCacheVersion = '2.0.2'
+
+// okhttp版本
+    okhttpVersion = '3.10.0'
+// okio版本
+    okioVersion = '1.14.0'
+// okhttp log 版本
+    okhttpLogVersion = '3.8.1'
+// gson 转化版本
+    gsonConverterVersion = '2.3.0'
+// gson版本
+    gsonVersion = '2.8.2'
+
+// 多dex
+    multidexVersion = '1.0.2'
+
+//KProgressHUD
+    progressHUDVersion = '1.1.0'
+
+    //圆形图片
+    cirleImageView = "2.1.0"
+
+    // 照片浏览器中的photoView
+    photoView = "1.4.1"
+    // 照片选择
+    matisse = "0.5.1"
+
+    photoview = "1.2.4"
+}

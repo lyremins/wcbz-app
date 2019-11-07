@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2019-10-01 15:00:00"
+        android:textColor="#91999f"
+        android:textSize="12sp"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="100dp"
+        android:paddingBottom="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/user1"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="6dp"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#91999f"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/img_head"
+            android:text=""
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
+            android:minWidth="40dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_chat_right"
+            android:layout_marginRight="8dp"
+            android:text="aa"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_toLeftOf="@+id/img_head"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"/>
+        <ImageView
+            android:id="@+id/img_image"
+            android:layout_width="140dp"
+            android:layout_height="210dp"
+            android:layout_marginRight="8dp"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@+id/img_head"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

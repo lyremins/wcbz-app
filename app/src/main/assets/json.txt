@@ -1,0 +1,18 @@
+{
+		"stateModel": "完好,大修,定检,排故,试飞,待退役",
+		"taskModel": "飞行前,飞行,再次出动准备,飞行后,排故,其他,值班,备份机",
+		"faultModel": "损耗故障,人为故障,环境因素",
+		"subjectModel": "起飞,着陆,直线飞行,曲线飞行,",
+		"sceneModel": "昼间简单情况,昼间复杂情况,夜间简单情况,夜间复杂情况,跨昼夜",
+		"carStateModel": "完好,大修,定检,排故,待退役",
+		"carTaskModel": "进场,作业中,排故,待退役",
+		"carTypeModel": "冷气车,氮气车,氧气车,电力车,油泵车,空调车,肼燃料加卸车",
+		"carFaultModel": "损耗故障,人为故障,环境因素,质量原因",
+		"pTypeModel": "干部,士官,士兵",
+		"pMajorModel": "机械,军械,特设,电子,雷达,电抗,四站",
+		"pPostModel": "副旅长,大队长,连长,分队长",
+		"ensureModel": "排故,特定检查,其他",
+		"pStatusModel": "进场,作业,待命",
+		"carWorkModel": "进场,作业,待命",
+		"__v": 0
+	}

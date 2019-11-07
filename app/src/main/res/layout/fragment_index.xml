@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activitys.ensure_manager.EnsureManagerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:text="外场保障指挥管理系统"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="数据管理"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/data"/>
+
+        <TextView
+            android:id="@+id/tv_bz_plan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="计划&amp;任务"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/anquanbaozhang"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_zongheetaishi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="综合态势"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/sas"/>
+
+        <TextView
+            android:id="@+id/tv_shangbao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="状态上报"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/status"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="50dp"
+        android:layout_weight="1">
+
+
+        <TextView
+            android:id="@+id/tv_chat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="即时通讯"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/chat"/>
+
+
+        <TextView
+            android:id="@+id/tv_tongji"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="统计分析"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:drawablePadding="3dp"
+            android:drawableTop="@mipmap/tongji"/>
+
+    </LinearLayout>
+
+</LinearLayout>

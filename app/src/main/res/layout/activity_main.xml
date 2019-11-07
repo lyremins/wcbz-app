@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activitys.main.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"
+            android:text="基础数据管理"/>
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_plane"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="飞机管理"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/plane"/>
+
+                <TextView
+                    android:id="@+id/tv_people"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="人员管理"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/user"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_state"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="状态管理"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/status"/>
+
+                <TextView
+                    android:id="@+id/tv_longevity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="有寿器件"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/qijian"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_org"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="组织机构"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/organization"/>
+
+                <TextView
+                    android:id="@+id/tv_car"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="车辆管理"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:drawableTop="@mipmap/car"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="30dp"
+                android:visibility="visible"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_danyao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="弹药管理"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:visibility="visible"
+                    android:drawableTop="@mipmap/danyao"/>
+
+                <TextView
+                    android:id="@+id/tv_plane_qijian"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="飞机-有寿器件"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:visibility="visible"
+                    android:drawableTop="@mipmap/guanlian"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="50dp"
+                android:visibility="visible"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_plane_car"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="飞机-保障车辆"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:visibility="visible"
+                    android:drawableTop="@mipmap/guanlian"/>
+
+                <TextView
+                    android:id="@+id/tv_plane_ammo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="飞机-弹药"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:drawablePadding="3dp"
+                    android:visibility="visible"
+                    android:drawableTop="@mipmap/guanlian"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
