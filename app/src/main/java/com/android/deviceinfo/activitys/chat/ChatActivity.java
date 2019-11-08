@@ -54,7 +54,9 @@ public class ChatActivity extends BaseActivity {
     private ImageView image;
     private int touid;
 
-    ChatAdapter chatAdapter = new ChatAdapter();
+    private ChatAdapter chatAdapter = new ChatAdapter();
+
+    private int chatNum;
 
     public static void start(Context context, String name, int chatType, int touid) {
         Intent intent = new Intent(context, ChatActivity.class);
@@ -117,7 +119,11 @@ public class ChatActivity extends BaseActivity {
     private void setData(List<ChatBean.DataBean> data, boolean flg) {
         chatAdapter.setListData(data);
         chatAdapter.notifyDataSetChanged();
-        if (flg) {
+//        if (flg) {
+//            recyclerview.scrollToPosition(data.size() - 1);
+//        }
+        if (chatNum < data.size()){
+            chatNum = data.size();
             recyclerview.scrollToPosition(data.size() - 1);
         }
     }
