@@ -15,6 +15,23 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a','x86', 'x86_64', 'arm64-v8a'
         }
     }
+
+    flavorDimensions 'prodtype'
+
+    productFlavors {
+        develop_ {
+            dimension 'prodtype'
+            buildConfigField 'String', 'H5_URL', '\"http://172.20.10.4:8000/\"'
+            buildConfigField 'String', 'URL', '\"http://172.20.10.4:8000/\"'
+        }
+
+        check_ {
+            dimension 'prodtype'
+            buildConfigField 'String', 'H5_URL', '\"http://122.51.43.110:8000/\"'
+            buildConfigField 'String', 'URL', '\"http://122.51.43.110:8001/\"'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

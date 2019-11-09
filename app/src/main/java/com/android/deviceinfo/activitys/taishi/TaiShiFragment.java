@@ -64,6 +64,9 @@ public class TaiShiFragment extends Fragment {
         tvQijian = view.findViewById(R.id.tv_qijian);
         tvDanyao = view.findViewById(R.id.tv_danyao);
 
+
+
+
         tvFlyPlan.setText(AppUtils.getDateWithFormater("yyyy-MM-dd") + " \n" +
                 "总飞机数：0 已进场飞机数：0\n" +
                 "总起落数：0 已完成起落数：0\n" +
@@ -71,8 +74,8 @@ public class TaiShiFragment extends Fragment {
                 "总进场人数：0 已进场人数：0");
 
         tvBzPlan.setText("今日保障计划概况\n" +
-                "总保障车辆数：0 总保障任务数：0\n" +
-                "进场车辆数：0 已保障任务数：0");
+                "总保障车辆数：0 已进场车辆数：0\n" +
+                "总保障飞机数：0 已进场飞机数：0");
 
 
         btnMoreFlyPlan.setOnClickListener(new View.OnClickListener() {
@@ -154,8 +157,8 @@ public class TaiShiFragment extends Fragment {
                                 "总进场人数："+ bean.enterPerson + "      已进场人数：" + bean.donePerson);
 
                         tvBzPlan.setText("今日保障计划概况:\n" +
-                                "总保障车辆数：" + bean.totalCar + "      总保障任务数：" + bean.totalTask + "\n" +
-                                "进场车辆数：" + bean.enterCar + "      已保障任务数：" + bean.doneTask);
+                                "总保障车辆数：" + bean.totalCar + "      已进场车辆数：" + bean.enterCar + "\n" +
+                                "总保障飞机数：" + bean.totalTask + "      已进场飞机数：" + bean.doneTask);
                     }
 
                     @Override

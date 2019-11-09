@@ -45,7 +45,7 @@ public class ConfigBean extends BaseResponseBean {
         public String ensureModel;
         public String pStatusModel;
         public String carWorkModel;
-        public String airTypeModel;
+        public String airTypeModel,faultMethodModel;
         public int __v;
     }
 }

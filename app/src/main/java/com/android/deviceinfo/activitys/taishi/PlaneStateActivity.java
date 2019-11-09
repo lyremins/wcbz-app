@@ -2,10 +2,14 @@ package com.android.deviceinfo.activitys.taishi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -15,8 +19,10 @@ import android.widget.TextView;
 
 import com.android.deviceinfo.MyApp;
 import com.android.deviceinfo.R;
+import com.android.deviceinfo.activitys.main.MainActivity;
 import com.android.deviceinfo.constants.NetContants;
 import com.android.deviceinfo.weights.MyWebView;
+import com.blankj.utilcode.util.StringUtils;
 
 public class PlaneStateActivity extends AppCompatActivity {
     private ImageView imgBack;
@@ -34,12 +40,13 @@ public class PlaneStateActivity extends AppCompatActivity {
         initView();
     }
 
+    @SuppressLint("JavascriptInterface")
     private void initView() {
         imgBack = findViewById(R.id.img_back);
         webview = findViewById(R.id.webview);
         loading = findViewById(R.id.loading);
+        webview.addJavascriptInterface(new MyJs(),"android");
         String url = NetContants.H5_URL + "#/airSituation?device=h5&uid=" + MyApp.sharedPreferences.getInt("user_id",0);
-        Log.e("url", url);
         Log.e("url", url);
         webview.loadUrl(url);
 
@@ -76,12 +83,19 @@ public class PlaneStateActivity extends AppCompatActivity {
         tvTitle.setText("飞机态势");
     }
 
-    @Override
-    public void onBackPressed() {
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else {
-            finish();
+    public class MyJs{
+        @JavascriptInterface
+        public void toUpLoadData() {
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(PlaneStateActivity.this, MainActivity.class);
+                    intent.putExtra("upload",true);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            });
         }
     }
+
 }

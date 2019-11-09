@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+        boolean upload = getIntent().getBooleanExtra("upload",false);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         viewpager = findViewById(R.id.viewpager);
 
@@ -113,6 +114,9 @@ public class MainActivity extends BaseActivity {
                         return true;
                     }
                 });
+        if (upload){
+            viewpager.setCurrentItem(3,false);
+        }
     }
 
     public void setVpItem(int num) {

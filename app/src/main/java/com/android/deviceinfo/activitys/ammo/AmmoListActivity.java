@@ -62,7 +62,7 @@ public class AmmoListActivity extends BaseActivity {
         listview = findViewById(R.id.listview);
         btnAdd = findViewById(R.id.btn_add);
         imgBack = findViewById(R.id.img_back);
-        tvNum.setText(orgname + "弹药数量：0");
+        tvNum.setText(orgname + "\n弹药数量：0");
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,10 +88,10 @@ public class AmmoListActivity extends BaseActivity {
                         if (data.isSucceed()) {
                             if (data.data == null || data.data.isEmpty()) {
 //                                tvEmpty.setVisibility(View.VISIBLE);
-                                tvNum.setText(orgname + "弹药数量：0");
+                                tvNum.setText(orgname + "\n弹药数量：0");
                                 setData(new ArrayList<AmmoBean.DataBean>());
                             } else {
-                                tvNum.setText(orgname + "弹药数量：" + data.data.size());
+                                tvNum.setText(orgname + "\n弹药数量：" + data.data.size());
                                 tvEmpty.setVisibility(View.GONE);
                                 setData(data.data);
                             }

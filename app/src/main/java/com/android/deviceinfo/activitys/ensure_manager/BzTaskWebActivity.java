@@ -75,13 +75,4 @@ public class BzTaskWebActivity extends BaseActivity {
         pb = findViewById(R.id.pb);
         tvTitle.setText("保障任务");
     }
-
-    @Override
-    public void onBackPressed() {
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else {
-            finish();
-        }
-    }
 }

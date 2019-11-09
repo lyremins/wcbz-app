@@ -81,12 +81,5 @@ public class CommonWebActivity extends BaseActivity {
         tvTitle.setText(getIntent().getStringExtra("title"));
     }
 
-    @Override
-    public void onBackPressed() {
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else {
-            finish();
-        }
-    }
+
 }

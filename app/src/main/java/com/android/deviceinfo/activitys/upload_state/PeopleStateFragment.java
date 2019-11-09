@@ -75,7 +75,7 @@ public class PeopleStateFragment extends Fragment {
 
     private void initData() {
 
-        MyApp.getPlane(getActivity(),
+        NetUtils.executeGetRequest(getActivity(), "getAirplaneToPlan", null,
                 new ICallBack<PlaneListBean>() {
                     @Override
                     public void onSucceed(PlaneListBean data) {
@@ -98,7 +98,8 @@ public class PeopleStateFragment extends Fragment {
                     }
                 });
 
-        NetUtils.executeGetRequest(getActivity(), "getPlan", null,
+
+        NetUtils.executeGetRequest(getActivity(), "getPlanToToday", null,
                 new ICallBack<AirPlanListBean>() {
                     @Override
                     public void onSucceed(AirPlanListBean data) {
@@ -295,7 +296,7 @@ public class PeopleStateFragment extends Fragment {
     private void showPlaneState() {
         final String[] array = MyApp.strToArray(MyApp.bean.pStatusModel);
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-        alertBuilder.setTitle("选择工作状态");
+        alertBuilder.setTitle("选择人员工作状态");
         alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

@@ -76,12 +76,5 @@ public class CarStateActivity extends AppCompatActivity {
         tvTitle.setText("车辆态势");
     }
 
-    @Override
-    public void onBackPressed() {
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else {
-            finish();
-        }
-    }
+
 }

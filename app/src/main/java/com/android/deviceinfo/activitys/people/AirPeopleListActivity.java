@@ -72,7 +72,7 @@ public class AirPeopleListActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvNum.setText(orgname + "机务人员数量：0");
+        tvNum.setText(orgname + "\n机务人员数量：0");
         NetUtils.executeGetRequest(this, "getPersonnel", null,
                 new ICallBack<AirPeopleListBean>() {
                     @Override
@@ -81,10 +81,10 @@ public class AirPeopleListActivity extends BaseActivity {
                         if (data.isSucceed()) {
                             if (data.data == null || data.data.isEmpty()) {
 //                                tvEmpty.setVisibility(View.VISIBLE);
-                                tvNum.setText(orgname + "机务人员数量：0");
+                                tvNum.setText(orgname + "\n机务人员数量：0");
                                 setData(new ArrayList<AirPeopleListBean.DataBean>());
                             } else {
-                                tvNum.setText(orgname + "机务人员数量：" + data.data.size());
+                                tvNum.setText(orgname + "\n机务人员数量：" + data.data.size());
                                 tvEmpty.setVisibility(View.GONE);
                                 setData(data.data);
                             }
@@ -138,7 +138,7 @@ public class AirPeopleListActivity extends BaseActivity {
                 viewHolder.tvCreateTime.setText("操作时间：" + data.create_time + "\n" +
                         "性别：" + data.sex + "\n联系方式：" + data.phone + "\n" +
                         "籍贯：" + data.nativeX + "\n所属单位：" + data.company + "\n职务：" + data.post + "\n" + "是否在岗：" + data.duty + "\n" +
-                        "专业：" + data.major + "\n毕业院校：" + data.school);
+                        "专业：" + data.major + "\n毕业院校：" + data.school+ "\n绑定飞机：" + data.bindAir);
                 viewHolder.tvType.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -45,6 +45,9 @@ import com.pancoit.bdboxsdk.util.ContentConvertTOBoxMessage;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -128,6 +131,11 @@ public class BlueToothActivity extends BaseActivity implements AgentListener {
             @Override
             public void onClick(View view) {
                 String json = getIntent().getStringExtra("json");
+                try {
+                    json = URLEncoder.encode(json, "Utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 final String touid = "943676".equals(MyApp.bdBoxId) ? "943675" : "943676";
                 CardMessage cardMessage = ContentConvertTOBoxMessage.
                         getInstance().castUserMessageTo0x12(touid,json);
@@ -330,46 +338,56 @@ public class BlueToothActivity extends BaseActivity implements AgentListener {
         ToastUtil.toastCenter(mContext, "onReceiveOtherMessage" + s + "---" + s1 + "---" + s2);
         LogUtils.e(TAG + "onReceiveOtherMessage", s);
         String str = AppUtils.hexStringToString(s1);
-        textView.setText("收到消息：" + str);
-
-        final Map<String,String> map = new Gson().fromJson(str,Map.class);
-        if (str != null && map != null){
-            String url = "";
-            if (str.contains("person_id")){
-                url = "updatePersonnel";
-                ToastUtil.toastCenter(mContext, "接收到北斗上报人员状态消息，开始上传到服务器");
-            }else if (str.contains("vehicle_id")){
-                url = "updateVehicle";
-                ToastUtil.toastCenter(mContext, "接收到北斗上报车辆状态消息，开始上传到服务器");
-            }else {
-                url = "updateAirplane";
-                ToastUtil.toastCenter(mContext, "接收到北斗上报飞机状态消息，开始上传到服务器");
-            }
-            NetUtils.executePostRequest(mContext, url, map,
-                    new ICallBack<BaseResponseBean>() {
-                        @Override
-                        public void onSucceed(BaseResponseBean data) {
-                            ToastUtil.toastCenter(mContext, "上报成功");
-                        }
-
-                        @Override
-                        public void onFailed(final String msg) {
-                            if (TextUtils.equals(msg, NetUtils.NET_ERROR)){
-                                // 离线存储
-                                ThreadUtils.exec(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        MyApp.editor.putString("updateAirplane",new Gson().toJson(map));
-                                        MyApp.editor.commit();
-                                    }
-                                });
-                                ToastUtil.toastCenter(mContext,"网络不可用,已离线存储");
-                            }else {
-                                ToastUtil.toastCenter(mContext, msg);
-                            }
-                        }
-                    });
+        try {
+            str = URLDecoder.decode(str, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
+        textView.setText("收到消息：\n" + str);
+
+        try {
+            final Map<String,String> map = new Gson().fromJson(str,Map.class);
+            if (str != null && map != null){
+                String url = "";
+                if (str.contains("person_id")){
+                    url = "updatePersonnel";
+                    ToastUtil.toastCenter(mContext, "接收到北斗上报人员状态消息，开始上传到服务器");
+                }else if (str.contains("vehicle_id")){
+                    url = "updateVehicle";
+                    ToastUtil.toastCenter(mContext, "接收到北斗上报车辆状态消息，开始上传到服务器");
+                }else {
+                    url = "updateAirplane";
+                    ToastUtil.toastCenter(mContext, "接收到北斗上报飞机状态消息，开始上传到服务器");
+                }
+                NetUtils.executePostRequest(mContext, url, map,
+                        new ICallBack<BaseResponseBean>() {
+                            @Override
+                            public void onSucceed(BaseResponseBean data) {
+                                ToastUtil.toastCenter(mContext, "上报成功");
+                            }
+
+                            @Override
+                            public void onFailed(final String msg) {
+                                if (TextUtils.equals(msg, NetUtils.NET_ERROR)){
+                                    // 离线存储
+                                    ThreadUtils.exec(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            MyApp.editor.putString("updateAirplane",new Gson().toJson(map));
+                                            MyApp.editor.commit();
+                                        }
+                                    });
+                                    ToastUtil.toastCenter(mContext,"网络不可用,已离线存储");
+                                }else {
+                                    ToastUtil.toastCenter(mContext, msg);
+                                }
+                            }
+                        });
+            }
+        }catch (Exception e){
+            ToastUtil.toastCenter(mContext,"出现异常：" + e.getMessage());
+        }
+
 //        map.put("airplane_id", id+"");
 //        map.put("state", tvPlaneState.getText().toString().trim());
 //        map.put("task", tvPlaneTask.getText().toString().trim());

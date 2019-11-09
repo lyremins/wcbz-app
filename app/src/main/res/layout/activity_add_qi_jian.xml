@@ -151,6 +151,7 @@
                     android:paddingLeft="5dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
+                    android:inputType="number"
                     android:background="@drawable/bg_white_r_2"
                     android:layout_marginLeft="10dp"/>
 
@@ -281,6 +282,7 @@
                     android:paddingLeft="5dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
+                    android:inputType="number"
                     android:background="@drawable/bg_white_r_2"
                     android:layout_marginLeft="10dp"/>
 

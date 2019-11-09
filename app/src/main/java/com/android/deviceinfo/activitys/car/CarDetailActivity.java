@@ -38,7 +38,7 @@ public class CarDetailActivity extends BaseActivity {
     private TextView tvDate;
     private TextView etState;
     private EditText etOrganiz;
-    private EditText etService;
+    private TextView etService;
     private EditText etArmyNum;
     private EditText etLife;
     private EditText etJieDuanMile;
@@ -134,6 +134,13 @@ public class CarDetailActivity extends BaseActivity {
                 showTaskState();
             }
         });
+
+        etService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showServiceModel();
+            }
+        });
     }
 
 
@@ -199,6 +206,20 @@ public class CarDetailActivity extends BaseActivity {
                     }
                 });
     }
+
+    private void showServiceModel(){
+        final String[] array = MyApp.strToArray(MyApp.bean.airTypeModel);
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder.setTitle("选择服务机型");
+        alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                etService.setText(array[i]);
+            }
+        }).create().show();
+    }
+
     /**
      * 任务态势
      */

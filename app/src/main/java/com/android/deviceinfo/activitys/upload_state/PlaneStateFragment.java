@@ -1,6 +1,7 @@
 package com.android.deviceinfo.activitys.upload_state;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,23 +13,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.android.deviceinfo.MyApp;
 import com.android.deviceinfo.R;
 import com.android.deviceinfo.activitys.blue_tooth.BlueToothActivity;
+import com.android.deviceinfo.activitys.plane.AddPlaneActivity;
 import com.android.deviceinfo.activitys.plane.PlaneListBean;
 import com.android.deviceinfo.base.ICallBack;
 import com.android.deviceinfo.bean.BaseResponseBean;
+import com.android.deviceinfo.bean.UploadImageBean;
 import com.android.deviceinfo.utils.NetUtils;
 import com.android.deviceinfo.utils.ThreadUtils;
 import com.android.deviceinfo.utils.ToastUtil;
+import com.android.deviceinfo.utils.matisse_utils.MatissePhotoHelper;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.kaopiz.kprogresshud.KProgressHUD;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +46,9 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import me.nereo.multi_image_selector.MultiImageSelectorActivity;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * 飞机状态上报
@@ -62,8 +75,30 @@ public class PlaneStateFragment extends Fragment {
     private CheckBox ckWuqi;
     private EditText etWuqiNum;
     private int maxUpdownCount;
+    private int maxQiluoTime;
 
-    private String houre,minute;
+    private String houre, minute;
+    private EditText etQiluoTimeNum;
+    private LinearLayout ltFault;
+    private EditText etUser;
+    private TextView tvFaultType;
+    private EditText etReason;
+    private EditText etGzjName;
+    private EditText etGzjType;
+    private EditText etDes;
+    private EditText etFac;
+    private TextView tvZjDate;
+    private ImageView imgAdd;
+    private ImageView image;
+
+    private File file;
+
+    private String path;
+
+    Calendar ca = Calendar.getInstance();
+    int mYear;
+    int mMonth;
+    int mDay;
 
     @Nullable
     @Override
@@ -76,6 +111,9 @@ public class PlaneStateFragment extends Fragment {
     }
 
     private void initView(View view) {
+        mYear = ca.get(Calendar.YEAR);
+        mMonth = ca.get(Calendar.MONTH);
+        mDay = ca.get(Calendar.DAY_OF_MONTH);
         mHud = KProgressHUD.create(getActivity());
         tvPlane = view.findViewById(R.id.tv_plane);
         tvPlaneState = view.findViewById(R.id.tv_plane_state);
@@ -87,49 +125,104 @@ public class PlaneStateFragment extends Fragment {
         tvPlaneEnter = view.findViewById(R.id.tv_plane_enter);
         et1Num = view.findViewById(R.id.et_1_num);
         et2Num = view.findViewById(R.id.et_2_num);
+        etQiluoTimeNum = view.findViewById(R.id.et_qiluo_time_num);
 
         ckWuqi = view.findViewById(R.id.ck_wuqi);
         etWuqiNum = view.findViewById(R.id.et_wuqi_num);
+
+        ltFault = view.findViewById(R.id.lt_fault);
+        etUser = view.findViewById(R.id.et_user);
+        tvFaultType = view.findViewById(R.id.tv_fault_type);
+        etReason = view.findViewById(R.id.et_reason);
+        etGzjName = view.findViewById(R.id.et_gzj_name);
+        etGzjType = view.findViewById(R.id.et_gzj_type);
+        etDes = view.findViewById(R.id.et_des);
+        etFac = view.findViewById(R.id.et_fac);
+        tvZjDate = view.findViewById(R.id.tv_zj_date);
+        imgAdd = view.findViewById(R.id.img_add);
+        image = view.findViewById(R.id.image);
         ckWuqi.setChecked(false);
 
         ckWuqi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
+                if (b) {
                     etWuqiNum.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     etWuqiNum.setVisibility(View.GONE);
                 }
             }
         });
 
-
-
         tvQiluoTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TimePickerDialog(getContext(),new TimePickerDialog.OnTimeSetListener() {
+                new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
 
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int min) {
-                        if (hourOfDay < 10){
+                        if (hourOfDay < 10) {
                             houre = "0" + hourOfDay;
-                        }else {
+                        } else {
                             houre = hourOfDay + "";
                         }
-                        if (min < 10){
-                            tvQiluoTime.setText(houre+":"+"0"+min);
-                        }else {
-                            tvQiluoTime.setText(houre+":"+min);
+                        if (min < 10) {
+                            tvQiluoTime.setText(houre + ":" + "0" + min);
+                        } else {
+                            tvQiluoTime.setText(houre + ":" + min);
                         }
                     }
                 }, 0, 0, true).show();
             }
         });
+
+        tvFaultType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] array = MyApp.strToArray(MyApp.bean.faultMethodModel);
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
+                alertBuilder.setTitle("选择故障类型");
+                alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        tvFaultType.setText(array[i]);
+                    }
+                }).create().show();
+            }
+        });
+
+        tvZjDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                mYear = year;
+                                mMonth = month;
+                                mDay = dayOfMonth;
+                                String data = year + "-" + (month + 1) + "-" + dayOfMonth;
+                                tvZjDate.setText(data);
+                            }
+                        },
+                        mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
+        imgAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MatissePhotoHelper.selectPhoto(PlaneStateFragment.this, 9);
+            }
+        });
+
+
     }
 
     private void initData() {
-        NetUtils.executeGetRequest(getActivity(),"getAirplaneToPlan", null,
+        NetUtils.executeGetRequest(getActivity(), "getAirplaneToPlan", null,
                 new ICallBack<PlaneListBean>() {
                     @Override
                     public void onSucceed(final PlaneListBean data) {
@@ -197,11 +290,18 @@ public class PlaneStateFragment extends Fragment {
                 return;
             }
         }
-        if (ckWuqi.isChecked()){
-            if (TextUtils.isEmpty(etWuqiNum.getText().toString())){
-                ToastUtil.toastCenter(getContext(),"请填写发射武器数量");
+        if (!TextUtils.isEmpty(etQiluoTimeNum.getText().toString().trim())) {
+            int num = Integer.valueOf(etQiluoTimeNum.getText().toString().trim());
+            if (num > maxQiluoTime) {
+                ToastUtil.toastCenter(getActivity(), "该飞机起落时间数最多可填写" + maxQiluoTime + "次");
                 return;
-            }else {
+            }
+        }
+        if (ckWuqi.isChecked()) {
+            if (TextUtils.isEmpty(etWuqiNum.getText().toString())) {
+                ToastUtil.toastCenter(getContext(), "请填写发射武器数量");
+                return;
+            } else {
             }
         }
         final String[] array = {"北斗上传", "网络上传"};
@@ -236,7 +336,7 @@ public class PlaneStateFragment extends Fragment {
                         map.put("engine_2", et2Num.getText().toString().trim());
                     }
                     Intent intent = new Intent(getActivity(), BlueToothActivity.class);
-                    intent.putExtra("json",new Gson().toJson(map));
+                    intent.putExtra("json", new Gson().toJson(map));
                     startActivity(intent);
                 } else {
                     commitData();
@@ -260,6 +360,9 @@ public class PlaneStateFragment extends Fragment {
         if (!etFlyHour.getText().toString().trim().isEmpty()) {
             map.put("airHour", etFlyHour.getText().toString().trim());
         }
+        if (!etQiluoTimeNum.getText().toString().trim().isEmpty()) {
+            map.put("approachTime", etQiluoTimeNum.getText().toString().trim());
+        }
         if (!tvQiluoTime.getText().toString().trim().isEmpty()) {
             map.put("airTime", tvQiluoTime.getText().toString().trim());
         }
@@ -278,11 +381,15 @@ public class PlaneStateFragment extends Fragment {
                 new ICallBack<BaseResponseBean>() {
                     @Override
                     public void onSucceed(BaseResponseBean data) {
-                        mHud.dismiss();
                         ToastUtil.toastCenter(getContext(), "上报成功");
                         etFlyHour.setText("");
                         etQiluoNum.setText("");
                         tvQiluoTime.setText("");
+                        if (TextUtils.equals(tvPlaneTask.getText().toString(),"排故")){
+                           uploadFault();
+                        }else {
+                            mHud.dismiss();
+                        }
                     }
 
                     @Override
@@ -305,12 +412,50 @@ public class PlaneStateFragment extends Fragment {
                 });
     }
 
+    /**
+     * 上报故障
+     */
+    private void uploadFault() {
+        if (!TextUtils.equals(tvPlaneTask.getText().toString(),"排故")){
+            return;
+        }
+        final Map<String, String> map = new HashMap<>();
+        map.put("airModel", tvPlane.getText().toString());
+        map.put("user_name", etUser.getText().toString().trim());
+        map.put("type", tvFaultType.getText().toString().trim());
+        map.put("reason", etReason.getText().toString().trim());
+        map.put("deviceName", etGzjName.getText().toString().trim());
+        map.put("model", etGzjType.getText().toString().trim());
+        map.put("desc", etDes.getText().toString().trim());
+        map.put("factory", etFac.getText().toString().trim());
+        map.put("date", tvZjDate.getText().toString().trim());
+        if (path != null) {
+            map.put("image_path", etReason.getText().toString().trim());
+        }
+
+        NetUtils.executePostRequest(getActivity(), "addFault", map,
+                new ICallBack<BaseResponseBean>() {
+                    @Override
+                    public void onSucceed(BaseResponseBean data) {
+                        mHud.dismiss();
+                        ltFault.setVisibility(View.GONE);
+                        ToastUtil.toastCenter(getContext(), "上报故障成功");
+                    }
+
+                    @Override
+                    public void onFailed(final String msg) {
+                        mHud.dismiss();
+                        ToastUtil.toastCenter(getContext(), msg);
+                    }
+                });
+    }
+
     private void showPlane() {
         final String[] array = new String[planeList.size()];
         for (int i = 0; i < planeList.size(); i++) {
             if (planeList.get(i).code != null) {
                 array[i] = planeList.get(i).code;
-            }else {
+            } else {
                 array[i] = "";
             }
         }
@@ -322,6 +467,7 @@ public class PlaneStateFragment extends Fragment {
                 dialogInterface.dismiss();
                 tvPlane.setText(array[i]);
                 maxUpdownCount = planeList.get(i).upDownNumber;
+                maxQiluoTime = planeList.get(i).approachTime;
                 id = planeList.get(i).airplane_id;
             }
         }).create().show();
@@ -341,7 +487,7 @@ public class PlaneStateFragment extends Fragment {
     }
 
     /**
-     * 飞机态势
+     * 选择飞机状态
      */
     private void showPlaneState() {
         final String[] array = MyApp.strToArray(MyApp.bean.stateModel);
@@ -357,18 +503,60 @@ public class PlaneStateFragment extends Fragment {
     }
 
     /**
-     * 任务态势
+     * 选择飞机任务状态
      */
     private void showTaskState() {
         final String[] array = MyApp.strToArray(MyApp.bean.taskModel);
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-        alertBuilder.setTitle("选择任务态势");
+        alertBuilder.setTitle("选择飞机任务状态");
         alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 tvPlaneTask.setText(array[i]);
+                if (TextUtils.equals(array[i], "排故")) {
+                    ltFault.setVisibility(View.VISIBLE);
+                }else {
+                    ltFault.setVisibility(View.GONE);
+                }
             }
         }).create().show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MatissePhotoHelper.REQUEST_CODE_CHOOSE) {
+            if (resultCode == RESULT_OK) {
+                // 获取返回的图片列表
+                final List<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+                file = new File(path.get(0));
+                Glide.with(getActivity()).load(file).into(imgAdd);
+                uploadImg();
+            }
+        }
+    }
+
+    private void uploadImg(){
+        mHud.show();
+        ThreadUtils.exec(new Runnable() {
+            @Override
+            public void run() {
+                NetUtils.upload(file, getActivity(),
+                        new ICallBack<UploadImageBean>() {
+                            @Override
+                            public void onSucceed(UploadImageBean data) {
+                                mHud.dismiss();
+                                path = data.image_path;
+                            }
+
+                            @Override
+                            public void onFailed(String msg) {
+                                mHud.dismiss();
+                                ToastUtil.toastCenter(getContext(), msg);
+                            }
+                        });
+            }
+        });
     }
 }

@@ -85,7 +85,7 @@ public class PlaneListActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvNum.setText(orgname + "飞机数量：0");
+        tvNum.setText(orgname + "\n飞机数量：0");
         MyApp.getPlane(this, new ICallBack<PlaneListBean>() {
                     @Override
                     public void onSucceed(PlaneListBean data) {
@@ -97,9 +97,9 @@ public class PlaneListActivity extends BaseActivity {
                             if (data.data == null || data.data.isEmpty()) {
 //                                tvEmpty.setVisibility(View.VISIBLE);
                                 setData(new ArrayList<PlaneListBean.DataBean>());
-                                tvNum.setText(orgname + "飞机数量：0");
+                                tvNum.setText(orgname + "\n飞机数量：0");
                             } else {
-                                tvNum.setText(orgname + "飞机数量：" + data.data.size());
+                                tvNum.setText(orgname + "\n飞机数量：" + data.data.size());
                                 tvEmpty.setVisibility(View.GONE);
                                 setData(data.data);
                             }

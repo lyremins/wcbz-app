@@ -76,12 +76,4 @@ public class BzStateActivity extends AppCompatActivity {
         tvTitle.setText("保障管理");
     }
 
-    @Override
-    public void onBackPressed() {
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else {
-            finish();
-        }
-    }
 }

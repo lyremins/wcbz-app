@@ -80,7 +80,7 @@ public class QiJianListActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvNum.setText(orgname + "器件数量：0");
+        tvNum.setText(orgname + "\n器件数量：0");
         NetUtils.executeGetRequest(this,"getDevice", null,
                 new ICallBack<QiJianListBean>() {
                     @Override
@@ -92,10 +92,10 @@ public class QiJianListActivity extends BaseActivity {
                         if (data.isSucceed()) {
                             if (data.data == null || data.data.isEmpty()) {
 //                                tvEmpty.setVisibility(View.VISIBLE);
-                                tvNum.setText(orgname + "器件数量：0");
+                                tvNum.setText(orgname + "\n器件数量：0");
                                 setData(new ArrayList<QiJianListBean.Databean>());
                             } else {
-                                tvNum.setText(orgname + "器件数量：" + data.data.size());
+                                tvNum.setText(orgname + "\n器件数量：" + data.data.size());
                                 tvEmpty.setVisibility(View.GONE);
                                 setData(data.data);
                             }

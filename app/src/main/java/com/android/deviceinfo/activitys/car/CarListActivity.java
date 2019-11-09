@@ -75,7 +75,7 @@ public class CarListActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvNum.setText(orgname + "车辆数量：0");
+        tvNum.setText(orgname + "\n车辆数量：0");
         NetUtils.executeGetRequest(this,"getVehicle", null,
                 new ICallBack<CarListBean>() {
                     @Override
@@ -84,10 +84,10 @@ public class CarListActivity extends BaseActivity {
                         if (data.isSucceed()) {
                             if (data.data == null || data.data.isEmpty()) {
 //                                tvEmpty.setVisibility(View.VISIBLE);
-                                tvNum.setText(orgname + "车辆数量：0");
+                                tvNum.setText(orgname + "\n车辆数量：0");
                                 setData(new ArrayList<CarListBean.DataBean>());
                             } else {
-                                tvNum.setText(orgname + "车辆数量：" + data.data.size());
+                                tvNum.setText(orgname + "\n车辆数量：" + data.data.size());
                                 tvEmpty.setVisibility(View.GONE);
                                 setData(data.data);
                             }

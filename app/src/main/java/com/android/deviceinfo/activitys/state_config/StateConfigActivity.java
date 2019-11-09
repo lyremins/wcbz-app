@@ -1,6 +1,5 @@
 package com.android.deviceinfo.activitys.state_config;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -73,6 +72,12 @@ public class StateConfigActivity extends BaseActivity {
     private TextView tvSceneModel;
     private EditText etAddSceneModel;
     private Button btnAddSceneModel;
+    private TextView tvAirTypeModel;
+    private EditText etAirTypeModel;
+    private Button btnAirTypeModel;
+    private TextView tvFaultMethodModel;
+    private EditText etAddFaultMethodModel;
+    private Button btnAddFaultMethodModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +143,12 @@ public class StateConfigActivity extends BaseActivity {
                 finish();
             }
         });
+        tvAirTypeModel = findViewById(R.id.tv_airTypeModel);
+        etAirTypeModel = findViewById(R.id.et_airTypeModel);
+        btnAirTypeModel = findViewById(R.id.btn_airTypeModel);
+        tvFaultMethodModel = findViewById(R.id.tv_faultMethodModel);
+        etAddFaultMethodModel = findViewById(R.id.et_add_faultMethodModel);
+        btnAddFaultMethodModel = findViewById(R.id.btn_add_faultMethodModel);
     }
 
     private void getData() {
@@ -173,112 +184,126 @@ public class StateConfigActivity extends BaseActivity {
         tvEnsureModel.setText(MyApp.bean.ensureModel);
         tvCarWorkModel.setText(MyApp.bean.carWorkModel);
         tvPStatusModel.setText(MyApp.bean.pStatusModel);
+        tvAirTypeModel.setText(MyApp.bean.airTypeModel);
+        tvFaultMethodModel.setText(MyApp.bean.faultMethodModel);
 
         tvStateModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"stateModel",MyApp.bean.stateModel);
+                EditStatusActivity.start(mContext, "stateModel", MyApp.bean.stateModel);
+            }
+        });
+
+        tvAirTypeModel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditStatusActivity.start(mContext, "airTypeModel", MyApp.bean.airTypeModel);
+            }
+        });
+
+        tvFaultMethodModel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditStatusActivity.start(mContext, "faultMethodModel", MyApp.bean.faultMethodModel);
             }
         });
 
         tvTaskModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"taskModel",MyApp.bean.taskModel);
+                EditStatusActivity.start(mContext, "taskModel", MyApp.bean.taskModel);
             }
         });
         tvFaultModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"faultModel",MyApp.bean.faultModel);
+                EditStatusActivity.start(mContext, "faultModel", MyApp.bean.faultModel);
             }
         });
         tvSubjectModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"subjectModel",MyApp.bean.subjectModel);
+                EditStatusActivity.start(mContext, "subjectModel", MyApp.bean.subjectModel);
             }
         });
         tvSceneModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"sceneModel",MyApp.bean.sceneModel);
+                EditStatusActivity.start(mContext, "sceneModel", MyApp.bean.sceneModel);
             }
         });
         tvCarStateModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"carStateModel",MyApp.bean.carStateModel);
+                EditStatusActivity.start(mContext, "carStateModel", MyApp.bean.carStateModel);
             }
         });
         tvCarTaskModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"carTaskModel",MyApp.bean.carTaskModel);
+                EditStatusActivity.start(mContext, "carTaskModel", MyApp.bean.carTaskModel);
             }
         });
         tvCarTypeModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"carTypeModel",MyApp.bean.carTypeModel);
+                EditStatusActivity.start(mContext, "carTypeModel", MyApp.bean.carTypeModel);
             }
         });
         tvCarFaultModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"carFaultModel",MyApp.bean.carFaultModel);
+                EditStatusActivity.start(mContext, "carFaultModel", MyApp.bean.carFaultModel);
             }
         });
         tvPTypeModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"pTypeModel",MyApp.bean.pTypeModel);
+                EditStatusActivity.start(mContext, "pTypeModel", MyApp.bean.pTypeModel);
             }
         });
         tvPMajorModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"pMajorModel",MyApp.bean.pMajorModel);
+                EditStatusActivity.start(mContext, "pMajorModel", MyApp.bean.pMajorModel);
             }
         });
         tvPPostModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"pPostModel",MyApp.bean.pPostModel);
+                EditStatusActivity.start(mContext, "pPostModel", MyApp.bean.pPostModel);
             }
         });
         tvEnsureModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"ensureModel",MyApp.bean.ensureModel);
+                EditStatusActivity.start(mContext, "ensureModel", MyApp.bean.ensureModel);
             }
         });
         tvCarWorkModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"carWorkModel",MyApp.bean.carWorkModel);
+                EditStatusActivity.start(mContext, "carWorkModel", MyApp.bean.carWorkModel);
             }
         });
         tvPStatusModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditStatusActivity.start(mContext,"pStatusModel",MyApp.bean.pStatusModel);
+                EditStatusActivity.start(mContext, "pStatusModel", MyApp.bean.pStatusModel);
             }
         });
-
-
 
 
         btnAddPlane.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String str = etAddPlane.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.stateModel += ("," + str);
-                save("stateModel",MyApp.bean.stateModel,etAddPlane);
+                save("stateModel", MyApp.bean.stateModel, etAddPlane);
                 getData();
             }
         });
@@ -287,12 +312,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddPlaneTask.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.taskModel += ("," + str);
-                save("taskModel",MyApp.bean.taskModel,etAddPlaneTask);
+                save("taskModel", MyApp.bean.taskModel, etAddPlaneTask);
                 getData();
             }
         });
@@ -301,12 +326,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddPlaneGuzhang.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.faultModel += ("," + str);
-                save("faultModel",MyApp.bean.faultModel,etAddPlaneGuzhang);
+                save("faultModel", MyApp.bean.faultModel, etAddPlaneGuzhang);
                 getData();
             }
         });
@@ -315,12 +340,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddPlaneProject.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.subjectModel += ("," + str);
-                save("subjectModel",MyApp.bean.subjectModel,etAddPlaneProject);
+                save("subjectModel", MyApp.bean.subjectModel, etAddPlaneProject);
                 getData();
             }
         });
@@ -329,12 +354,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddSceneModel.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.sceneModel += ("," + str);
-                save("sceneModel",MyApp.bean.sceneModel,etAddSceneModel);
+                save("sceneModel", MyApp.bean.sceneModel, etAddSceneModel);
                 getData();
             }
         });
@@ -343,12 +368,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddCarState.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.carStateModel += ("," + str);
-                save("carStateModel",MyApp.bean.carStateModel,etAddCarState);
+                save("carStateModel", MyApp.bean.carStateModel, etAddCarState);
                 getData();
             }
         });
@@ -357,12 +382,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddCarTask.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.carTaskModel += ("," + str);
-                save("carTaskModel",MyApp.bean.carTaskModel,etAddCarTask);
+                save("carTaskModel", MyApp.bean.carTaskModel, etAddCarTask);
                 getData();
             }
         });
@@ -371,12 +396,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddCarType.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.carTypeModel += ("," + str);
-                save("carTypeModel",MyApp.bean.carTypeModel,etAddCarType);
+                save("carTypeModel", MyApp.bean.carTypeModel, etAddCarType);
                 getData();
             }
         });
@@ -385,12 +410,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddCarGuzhang.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.carFaultModel += ("," + str);
-                save("carFaultModel",MyApp.bean.carFaultModel,etAddCarGuzhang);
+                save("carFaultModel", MyApp.bean.carFaultModel, etAddCarGuzhang);
                 getData();
             }
         });
@@ -399,12 +424,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddUserType.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.pTypeModel += ("," + str);
-                save("pTypeModel",MyApp.bean.pTypeModel,etAddUserType);
+                save("pTypeModel", MyApp.bean.pTypeModel, etAddUserType);
                 getData();
             }
         });
@@ -413,12 +438,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddUserPro.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.pMajorModel += ("," + str);
-                save("pMajorModel",MyApp.bean.pMajorModel,etAddUserPro);
+                save("pMajorModel", MyApp.bean.pMajorModel, etAddUserPro);
                 getData();
             }
         });
@@ -427,12 +452,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddUserJob.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.pPostModel += ("," + str);
-                save("pPostModel",MyApp.bean.pPostModel,etAddUserJob);
+                save("pPostModel", MyApp.bean.pPostModel, etAddUserJob);
                 getData();
             }
         });
@@ -441,12 +466,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddBaozhangTask.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.ensureModel += ("," + str);
-                save("ensureModel",MyApp.bean.ensureModel,etAddBaozhangTask);
+                save("ensureModel", MyApp.bean.ensureModel, etAddBaozhangTask);
                 getData();
             }
         });
@@ -455,12 +480,12 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddUserWork.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.pStatusModel += ("," + str);
-                save("pStatusModel",MyApp.bean.pStatusModel,etAddUserWork);
+                save("pStatusModel", MyApp.bean.pStatusModel, etAddUserWork);
                 getData();
             }
         });
@@ -469,12 +494,40 @@ public class StateConfigActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String str = etAddCarWork.getText().toString().trim();
-                if (str.isEmpty()){
-                    ToastUtil.toastCenter(mContext,"输入不能为空");
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
                     return;
                 }
                 MyApp.bean.carWorkModel += ("," + str);
-                save("carWorkModel",MyApp.bean.carWorkModel,etAddCarWork);
+                save("carWorkModel", MyApp.bean.carWorkModel, etAddCarWork);
+                getData();
+            }
+        });
+
+        btnAirTypeModel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String str = etAirTypeModel.getText().toString().trim();
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
+                    return;
+                }
+                MyApp.bean.airTypeModel += ("," + str);
+                save("carWorkModel", MyApp.bean.airTypeModel, etAirTypeModel);
+                getData();
+            }
+        });
+
+        btnAddFaultMethodModel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String str = etAddFaultMethodModel.getText().toString().trim();
+                if (str.isEmpty()) {
+                    ToastUtil.toastCenter(mContext, "输入不能为空");
+                    return;
+                }
+                MyApp.bean.faultMethodModel += ("," + str);
+                save("carWorkModel", MyApp.bean.faultMethodModel, etAddFaultMethodModel);
                 getData();
             }
         });
@@ -508,11 +561,11 @@ public class StateConfigActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (isFinishing()){
+                if (isFinishing()) {
                     return;
                 }
                 getData();
             }
-        },1500);
+        }, 1500);
     }
 }

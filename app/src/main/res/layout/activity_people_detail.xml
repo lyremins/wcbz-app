@@ -24,7 +24,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_centerInParent="true"
-            android:text="添加机务人员"/>
+            android:text="机务人员详情"/>
 
         <TextView
             android:id="@+id/btn_add"
@@ -194,14 +194,15 @@
                     android:textSize="16sp"
                     android:text="单位："
                     android:textColor="@color/colorPrimaryDark"/>
-                <EditText
+                <TextView
                     android:id="@+id/et_danwei"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:paddingLeft="5dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="15sp"
-                    android:background="@drawable/bg_white_r_2"
+                    android:hint="请选择"
+                    android:gravity="center_vertical"
                     android:layout_marginLeft="10dp"/>
 
             </LinearLayout>
@@ -227,7 +228,6 @@
                     android:paddingLeft="5dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
-                    android:inputType="number"
                     android:background="@drawable/bg_white_r_2"
                     android:layout_marginLeft="10dp"/>
 

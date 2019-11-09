@@ -76,12 +76,5 @@ public class AirPlanWebActivity extends BaseActivity {
         tvTitle.setText("飞行计划");
     }
 
-    @Override
-    public void onBackPressed() {
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else {
-            finish();
-        }
-    }
+
 }

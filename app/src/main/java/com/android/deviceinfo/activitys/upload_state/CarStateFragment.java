@@ -260,7 +260,7 @@ public class CarStateFragment extends Fragment {
     private void showTaskState() {
         final String[] array = MyApp.strToArray(MyApp.bean.carTaskModel);
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(getActivity());
-        alertBuilder.setTitle("选择任务态势");
+        alertBuilder.setTitle("选择车辆任务状态");
         alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

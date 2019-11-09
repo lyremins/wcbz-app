@@ -61,5 +61,6 @@ public class PlaneListBean extends BaseResponseBean implements Serializable {
         public String task;
         public boolean isSpead = false;
         public int upDownNumber;
+        public int approachTime;
     }
 }

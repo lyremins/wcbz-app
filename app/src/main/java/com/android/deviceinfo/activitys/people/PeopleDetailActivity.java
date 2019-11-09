@@ -1,10 +1,12 @@
 package com.android.deviceinfo.activitys.people;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.android.deviceinfo.MyApp;
 import com.android.deviceinfo.R;
+import com.android.deviceinfo.activitys.org.OrgBean;
 import com.android.deviceinfo.activitys.plane.PlaneListBean;
 import com.android.deviceinfo.base.BaseActivity;
 import com.android.deviceinfo.base.ICallBack;
@@ -35,7 +38,7 @@ public class PeopleDetailActivity extends BaseActivity {
     private TextView etSex;
     private EditText etPhone;
     private EditText etJiguan;
-    private EditText etDanwei;
+    private TextView etDanwei;
     private EditText etRow;
     private EditText etZhiwu;
     private TextView etMajor;
@@ -47,10 +50,12 @@ public class PeopleDetailActivity extends BaseActivity {
 
     private List<PlaneListBean.DataBean> planeList = new ArrayList<>();
 
-    private int airplaneId;
+    private String airplaneId;
 
     private AirPeopleListBean.DataBean dataBean;
     private TextView tvZaigang;
+
+    private List<OrgBean.DataBean.OrganizArrayBean> orgList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +100,7 @@ public class PeopleDetailActivity extends BaseActivity {
         etBigTask.setText(dataBean.greatTask);
         tvDate.setText(dataBean.enlist);
         tvZaigang.setText(dataBean.duty);
+        tvPlane.setText(dataBean.bindAir);
 
         // 返回键
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +135,20 @@ public class PeopleDetailActivity extends BaseActivity {
             }
         });
 
+        tvDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showShengChanTimeDialog();
+            }
+        });
+
+        etDanwei.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showOrg();
+            }
+        });
+
 
         MyApp.getPlane(this, new ICallBack<PlaneListBean>() {
             @Override
@@ -151,6 +171,29 @@ public class PeopleDetailActivity extends BaseActivity {
 
             }
         });
+
+        NetUtils.executeGetRequest(mContext, "getOrganiz", null,
+                new ICallBack<OrgBean>() {
+                    @Override
+                    public void onSucceed(OrgBean data) {
+                        if (data == null) {
+                            return;
+                        }
+                        if (data.isSucceed()) {
+                            if (data.data == null || data.data.isEmpty()) {
+                            } else {
+                                orgList.clear();
+                                orgList.addAll(data.data.get(0).organizArray);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(final String msg) {
+                        ToastUtil.toastCenter(mContext, msg);
+
+                    }
+                });
 
 
         tvZaigang.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +266,7 @@ public class PeopleDetailActivity extends BaseActivity {
         map.put("greatTask", etBigTask.getText().toString().trim());
         map.put("duty", tvZaigang.getText().toString().trim());
         map.put("major", etMajor.getText().toString().trim());
-        map.put("bindAir", airplaneId + "");
+        map.put("bindAir", tvPlane.getText().toString());
         map.put("person_id", dataBean.person_id + "");
         showHud();
         NetUtils.executePostRequest(this, "updatePersonnel", map,
@@ -256,6 +299,66 @@ public class PeopleDetailActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * 选择组织
+     */
+    private void showOrg() {
+        final String[] array = new String[orgList.size()];
+        for (int i = 0; i < orgList.size(); i++) {
+            array[i] = orgList.get(i).label;
+        }
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mContext);
+        alertBuilder.setTitle("选择单位");
+        alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                if (orgList.get(i).children == null || orgList.get(i).children.isEmpty()) {
+                    etDanwei.setText(array[i]);
+                }else {
+                    showTwoOrg(orgList.get(i).children,orgList.get(i).label);
+                }
+            }
+        }).create().show();
+    }
+
+    private void showTwoOrg(final List<OrgBean.DataBean.OrganizArrayBean.ChildrenBeanX> list, String title){
+        final String[] array = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i).label;
+        }
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mContext);
+        alertBuilder.setTitle(title);
+        alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                if (list.get(i).children == null || list.get(i).children.isEmpty()) {
+                    etDanwei.setText(array[i]);
+                }else {
+                    showThreeOrg(list.get(i).children,list.get(i).label);
+                }
+            }
+        }).create().show();
+
+    }
+    private void showThreeOrg(final List<OrgBean.DataBean.OrganizArrayBean.ChildrenBeanX.ChildrenBean> list,String title){
+        final String[] array = new String[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i).label;
+        }
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mContext);
+        alertBuilder.setTitle(title);
+        alertBuilder.setItems(array, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                etDanwei.setText(array[i]);
+            }
+        }).create().show();
+
+    }
+
     private void showPlane() {
         final String[] array = new String[planeList.size()];
         for (int i = 0; i < planeList.size(); i++) {
@@ -272,9 +375,28 @@ public class PeopleDetailActivity extends BaseActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
                 tvPlane.setText(array[i]);
-                airplaneId = planeList.get(i).airplane_id;
+                airplaneId = planeList.get(i).code;
             }
         }).create().show();
+    }
+
+    /**
+     * 入伍时间
+     */
+    private void showShengChanTimeDialog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        mYear = year;
+                        mMonth = month;
+                        mDay = dayOfMonth;
+                        String data = year + "-" + (month + 1) + "-" + dayOfMonth;
+                        tvDate.setText(data);
+                    }
+                },
+                mYear, mMonth, mDay);
+        datePickerDialog.show();
     }
 
 }
